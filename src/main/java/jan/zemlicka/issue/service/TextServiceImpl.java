@@ -1,5 +1,7 @@
 package jan.zemlicka.issue.service;
 
+import jan.zemlicka.issue.model.TextTransformerReq;
+import jan.zemlicka.issue.model.TextTransformerRes;
 import jan.zemlicka.issue.utils.Constants;
 import java.text.Normalizer;
 import java.util.ArrayList;
@@ -18,13 +20,14 @@ import org.springframework.stereotype.Service;
 public class TextServiceImpl implements TextService {
 
     @Override
-    public String transformText(String arg) {
-        if (StringUtils.isBlank(arg)) {
-            return Constants.EMPTY_STRING;
+    public TextTransformerRes transformText(TextTransformerReq textTransformerReq) {
+        if (StringUtils.isBlank(textTransformerReq.getInput())) {
+            return new TextTransformerRes(Constants.EMPTY_STRING);
         }
-        String mergeSpaceText = normalizeSpace(arg);
+        String mergeSpaceText = normalizeSpace(textTransformerReq.getInput());
         StringBuilder cachedTextBuilder = reverseAndLowerCaseText(mergeSpaceText);
-        return changeUpperCase(cachedTextBuilder, getPositionsForUpperCase(mergeSpaceText));
+        String resultText = changeUpperCase(cachedTextBuilder, getPositionsForUpperCase(mergeSpaceText));
+        return new TextTransformerRes(resultText);
     }
 
     private String normalizeSpace(String arg) {
