@@ -1,6 +1,7 @@
 --- Rest API for transform text ---
 
  Default port is : 8888
+ Default path mapping for Text controller is : /api 
  Path for request is: /transformText
  Method is: POST
  Input body format is: json
