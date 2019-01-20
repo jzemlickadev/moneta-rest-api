@@ -29,7 +29,7 @@ public class TextTransformerTest {
      * Maybe this is overhead, i can use Mockito
      */
     @Test
-    public void TextTransformerTest() {
+    public void successTextTransformTest() {
         TextTransformerRes response = textService.transformText(new TextTransformerReq(SAMPLE_ENTRY));
         assertEquals(response.getOutput(), RIGHT_RESULT);
     }
