@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <name>text-transformer</name>
-    <description>Rest API for a Simple text Taking Application</description>
+    <description>Rest API for simple transform text application</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

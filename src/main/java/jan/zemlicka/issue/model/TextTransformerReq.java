@@ -9,6 +9,9 @@ public class TextTransformerReq {
         this.input = input;
     }
 
+    public TextTransformerReq() {
+    }
+
     private String input;
     
     public String getInput() {
