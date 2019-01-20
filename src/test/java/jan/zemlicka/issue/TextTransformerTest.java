@@ -25,8 +25,8 @@ public class TextTransformerTest {
     TextService textService;
 
     /*
-     * Load context and call text service for result  
-     * Maybe this is overhead, i can use Mockito
+     * Load context and call text service for result.
+     * Maybe this is overhead, i can use Mockito.
      */
     @Test
     public void successTextTransformTest() {
