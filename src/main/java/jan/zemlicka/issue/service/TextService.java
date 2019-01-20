@@ -9,5 +9,12 @@ import jan.zemlicka.issue.model.TextTransformerRes;
 
 
 public interface TextService {
+
+    /**
+     * Transform text according task 
+     *
+     * @param entry is TextTransformerReq DTO for rest json input  
+     * @return TextTransformerRes DTO with String output where is transformed text
+     */
     TextTransformerRes transformText(TextTransformerReq entry);
 }

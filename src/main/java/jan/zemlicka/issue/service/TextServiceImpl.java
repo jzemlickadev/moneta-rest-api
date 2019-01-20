@@ -20,7 +20,7 @@ import org.springframework.stereotype.Service;
 public class TextServiceImpl implements TextService {
 
     @Override
-    public TextTransformerRes transformText(TextTransformerReq textTransformerReq) {
+    public TextTransformerRes transformText(final TextTransformerReq textTransformerReq) {
         if (StringUtils.isBlank(textTransformerReq.getInput())) {
             return new TextTransformerRes(Constants.EMPTY_STRING);
         }
@@ -30,23 +30,23 @@ public class TextServiceImpl implements TextService {
         return new TextTransformerRes(resultText);
     }
 
-    private String normalizeSpace(String arg) {
+    private String normalizeSpace(final String arg) {
         // StringUtils.normalizeSpace(arg); - Remove first space
         return arg.replaceAll(Constants.SPACE_PATTERN, Constants.SPACE);
     }
 
-    private StringBuilder reverseAndLowerCaseText(String arg) {
+    private StringBuilder reverseAndLowerCaseText(final String arg) {
         return new StringBuilder(arg.toLowerCase()).reverse();
     }
 
-    private String changeUpperCase(StringBuilder stringBuilder, List<Integer> indexes) {
+    private String changeUpperCase(final StringBuilder stringBuilder, final List<Integer> indexes) {
         indexes.forEach(position ->
                 stringBuilder.setCharAt(position, Character.toUpperCase(stringBuilder.charAt(position)))
         );
         return stringBuilder.toString();
     }
 
-    private List<Integer> getPositionsForUpperCase(String arg) {
+    private List<Integer> getPositionsForUpperCase(final String arg) {
         // normalize tex for example a = á.
         String normalizedText = removeAccent(arg);
         List<Integer> positions = new ArrayList<>();
