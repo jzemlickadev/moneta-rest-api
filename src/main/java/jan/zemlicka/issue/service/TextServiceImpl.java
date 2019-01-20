@@ -24,9 +24,9 @@ public class TextServiceImpl implements TextService {
         if (StringUtils.isBlank(textTransformerReq.getInput())) {
             return new TextTransformerRes(Constants.EMPTY_STRING);
         }
-        String mergeSpaceText = normalizeSpace(textTransformerReq.getInput());
-        StringBuilder cachedTextBuilder = reverseAndLowerCaseText(mergeSpaceText);
-        String resultText = changeUpperCase(cachedTextBuilder, getPositionsForUpperCase(mergeSpaceText));
+        String normalizedSpaceText = normalizeSpace(textTransformerReq.getInput());
+        StringBuilder cachedTextBuilder = reverseAndLowerCaseText(normalizedSpaceText);
+        String resultText = changeUpperCase(cachedTextBuilder, getPositionsForUpperCase(normalizedSpaceText));
         return new TextTransformerRes(resultText);
     }
 
