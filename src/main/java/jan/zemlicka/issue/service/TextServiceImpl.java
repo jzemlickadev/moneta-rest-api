@@ -22,37 +22,40 @@ public class TextServiceImpl implements TextService {
         if (StringUtils.isBlank(arg)) {
             return Constants.EMPTY_STRING;
         }
-        String mergeSpaceText = mergeSpace(arg);
-        String cachedText = reverseText(mergeSpaceText);
-        return changeUpperCase(cachedText, getPositions4UpperCase(mergeSpaceText));
+        String mergeSpaceText = normalizeSpace(arg);
+        StringBuilder cachedTextBuilder = reverseAndLowerCaseText(mergeSpaceText);
+        return changeUpperCase(cachedTextBuilder, getPositionsForUpperCase(mergeSpaceText));
     }
-    
-    private String mergeSpace(String arg) {
+
+    private String normalizeSpace(String arg) {
         // StringUtils.normalizeSpace(arg); - Remove first space
         return arg.replaceAll(Constants.SPACE_PATTERN, Constants.SPACE);
     }
 
-    private String reverseText(String arg) {
-        return new StringBuilder(arg).reverse().toString();
+    private StringBuilder reverseAndLowerCaseText(String arg) {
+        return new StringBuilder(arg.toLowerCase()).reverse();
     }
 
-    private String changeUpperCase(String arg, List<Integer> indexes) {
-        StringBuilder stringBuilder = new StringBuilder(arg.toLowerCase());
+    private String changeUpperCase(StringBuilder stringBuilder, List<Integer> indexes) {
         indexes.forEach(position ->
                 stringBuilder.setCharAt(position, Character.toUpperCase(stringBuilder.charAt(position)))
         );
         return stringBuilder.toString();
     }
 
-    private List<Integer> getPositions4UpperCase(String arg) {
+    private List<Integer> getPositionsForUpperCase(String arg) {
         // normalize tex for example a = á.
-        String normalizedText = Normalizer.normalize(arg, Normalizer.Form.NFD)
-                .replaceAll(Constants.NORMALIZE_PATTERN, Constants.EMPTY_STRING);
+        String normalizedText = removeAccent(arg);
         List<Integer> positions = new ArrayList<>();
         Matcher matcher = Pattern.compile(Constants.UPPER_CASE_PATTERN).matcher(normalizedText);
         while (matcher.find()) {
             positions.add(matcher.start());
         }
         return positions;
+    }
+
+    private String removeAccent(final String arg) {
+        return Normalizer.normalize(arg, Normalizer.Form.NFD)
+                .replaceAll(Constants.NORMALIZE_PATTERN, Constants.EMPTY_STRING);
     }
 }
