@@ -3,6 +3,8 @@ package jan.zemlicka.issue.exception;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+
+// there is no more error situations for error handling with @ControllerAdvice
 @ResponseStatus(value = HttpStatus.NOT_FOUND)
 public class ResourceNotFoundException extends RuntimeException {
     private String resourceName;
