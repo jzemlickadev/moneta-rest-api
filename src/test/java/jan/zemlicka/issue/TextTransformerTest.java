@@ -26,7 +26,8 @@ public class TextTransformerTest {
 
     /*
      * Load context and call text service for result.
-     * Maybe this is overhead, i can use Mockito.
+     * Maybe this is overhead, i can use Mockito or non Autowired service, but simple instanced by new TextService(), 
+     * there is no beans properties.
      */
     @Test
     public void successTextTransformTest() {
