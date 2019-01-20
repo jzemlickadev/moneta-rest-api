@@ -1,6 +1,7 @@
 package jan.zemlicka.issue;
 
 import jan.zemlicka.issue.model.TextTransformerReq;
+import jan.zemlicka.issue.model.TextTransformerRes;
 import jan.zemlicka.issue.service.TextService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -29,8 +30,8 @@ public class TextTransformerTest {
      */
     @Test
     public void TextTransformerTest() {
-        textService.transformText(new TextTransformerReq());
-       // assertEquals(resultText, RIGHT_RESULT);
+        TextTransformerRes response = textService.transformText(new TextTransformerReq(SAMPLE_ENTRY));
+        assertEquals(response.getOutput(), RIGHT_RESULT);
     }
 
 }
