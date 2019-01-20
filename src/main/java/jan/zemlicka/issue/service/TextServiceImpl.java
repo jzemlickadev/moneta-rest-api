@@ -23,8 +23,8 @@ public class TextServiceImpl implements TextService {
             return Constants.EMPTY_STRING;
         }
         String mergeSpaceText = mergeSpace(arg);
-        String cashedText = reverseText(mergeSpaceText);
-        return changeUpperCase(cashedText, getPositions4UpperCase(mergeSpaceText));
+        String cachedText = reverseText(mergeSpaceText);
+        return changeUpperCase(cachedText, getPositions4UpperCase(mergeSpaceText));
     }
     
     private String mergeSpace(String arg) {
