@@ -1,7 +1,6 @@
 package jan.zemlicka.issue.utils;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.logging.log4j.util.Strings;
 
 /**
  * Created by jzemlicka on 19.01.2019.
