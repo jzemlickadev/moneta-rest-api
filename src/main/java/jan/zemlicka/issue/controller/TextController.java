@@ -23,7 +23,6 @@ public class TextController {
     TextService textService;
 
     @RequestMapping(value = "/transformText", method = RequestMethod.POST)
-    
     public @ResponseBody TextTransformerRes transformText(@RequestBody @NotNull TextTransformerReq textTransformerReq) {
         return textService.transformText(textTransformerReq);
     }
