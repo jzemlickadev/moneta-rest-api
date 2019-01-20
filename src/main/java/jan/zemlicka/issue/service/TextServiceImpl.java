@@ -48,7 +48,7 @@ public class TextServiceImpl implements TextService {
 
     private List<Integer> getPositionsForUpperCase(final String arg) {
         // normalize tex for example a = á.
-        String normalizedText = removeAccent(arg);
+        String normalizedText = removeAccents(arg);
         List<Integer> positions = new ArrayList<>();
         Matcher matcher = Pattern.compile(Constants.UPPER_CASE_PATTERN).matcher(normalizedText);
         while (matcher.find()) {
@@ -57,7 +57,7 @@ public class TextServiceImpl implements TextService {
         return positions;
     }
 
-    private String removeAccent(final String arg) {
+    private String removeAccents(final String arg) {
         return Normalizer.normalize(arg, Normalizer.Form.NFD)
                 .replaceAll(Constants.NORMALIZE_PATTERN, Constants.EMPTY_STRING);
     }
