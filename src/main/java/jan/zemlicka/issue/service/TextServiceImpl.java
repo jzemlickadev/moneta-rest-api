@@ -19,7 +19,7 @@ public class TextServiceImpl implements TextService {
 
     @Override
     public String transformText(String arg) {
-        if (StringUtils.isEmpty(arg)) {
+        if (StringUtils.isBlank(arg)) {
             return Constants.EMPTY_STRING;
         }
         String mergeSpaceText = mergeSpace(arg);
@@ -46,10 +46,10 @@ public class TextServiceImpl implements TextService {
 
     private List<Integer> getPositions4UpperCase(String arg) {
         // normalize tex for example a = á.
-        arg = Normalizer.normalize(arg, Normalizer.Form.NFD)
+        String normalizedText = Normalizer.normalize(arg, Normalizer.Form.NFD)
                 .replaceAll(Constants.NORMALIZE_PATTERN, Constants.EMPTY_STRING);
         List<Integer> positions = new ArrayList<>();
-        Matcher matcher = Pattern.compile(Constants.UPPER_CASE_PATTERN).matcher(arg);
+        Matcher matcher = Pattern.compile(Constants.UPPER_CASE_PATTERN).matcher(normalizedText);
         while (matcher.find()) {
             positions.add(matcher.start());
         }
