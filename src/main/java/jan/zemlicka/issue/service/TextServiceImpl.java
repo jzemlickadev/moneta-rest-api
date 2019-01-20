@@ -4,7 +4,6 @@ import jan.zemlicka.issue.utils.Constants;
 import java.text.Normalizer;
 import java.util.ArrayList;
 import java.util.List;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import org.apache.commons.lang.StringUtils;
@@ -23,10 +22,9 @@ public class TextServiceImpl implements TextService {
         if (StringUtils.isEmpty(arg)) {
             return Constants.EMPTY_STRING;
         }
-        arg = mergeSpace(arg);
-        String cashedText = reverseText(arg);
-        arg = changeUpperCase(cashedText, getPositions4UpperCase(arg));
-        return arg;
+        String mergeSpaceText = mergeSpace(arg);
+        String cashedText = reverseText(mergeSpaceText);
+        return changeUpperCase(cashedText, getPositions4UpperCase(mergeSpaceText));
     }
     
     private String mergeSpace(String arg) {
