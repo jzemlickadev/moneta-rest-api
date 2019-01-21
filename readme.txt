@@ -19,8 +19,7 @@
  
 PS: V zadání je věta "Na pozici, kde se původně vyskytovala písmena a,e,i,o,u budou nově písmena uppercase, všechna ostatní písmena budou lowercase."
 V příkladu, který je uveden v zadání i zde v Request a Response json body se mění velikost písmene na pozici kde je písmeno "á" a to z "o" na "O".
-Proto jsem bral zadnání ve kterém beru a = á, e = {ě,é} atd.
-
+Proto jsem bral zadnání ve kterém beru a = á, e = {ě,é} atd. Pokud to není cílem zadání, stačí odebrat volání metody normalizeAccents(..)
 
  
  
