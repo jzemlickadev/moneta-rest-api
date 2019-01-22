@@ -9,7 +9,7 @@
  
 --- example call after run (mvn spring-boot:run) ---
  
- POST: localhost:8888/api/transformsText/
+ POST: localhost:8888/api/transformText/
  Request json body : {
                    "input":"Ahoj, jak se máš?"
                      }
